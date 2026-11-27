@@ -67,6 +67,73 @@ export default function ProductPage() {
         </div>
       </nav>
 
+      {/* Image Gallery */}
+      <div className="max-w-2xl mx-auto mb-8">
+        <div className="space-y-4">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="relative aspect-square bg-white rounded-2xl overflow-hidden shadow-lg"
+          >
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={currentImage}
+                src={images[currentImage].url}
+                alt={images[currentImage].alt}
+                className="w-full h-full object-contain p-6"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+                onClick={() => setShowModal(true)}
+              />
+            </AnimatePresence>
+
+            {images.length > 1 && (
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                {images.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentImage(i)}
+                    className={`w-3 h-3 rounded-full transition-all ${
+                      i === currentImage ? 'bg-white w-8' : 'bg-white/50 hover:bg-white/75'
+                    }`}
+                    aria-label={`Image ${i + 1}`}
+                  />
+                ))}
+              </div>
+            )}
+
+            {/* Zoom indicator */}
+            <div className="absolute top-4 right-4 bg-white/80 backdrop-blur-sm rounded-full px-3 py-1.5 text-xs text-gray-600 flex items-center gap-1">
+              <FaArrowRight size={12} /> {t('تكبير', 'Zoom')}
+            </div>
+          </motion.div>
+
+          {/* Thumbnails */}
+          {images.length > 1 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="flex gap-2 overflow-x-auto pb-2"
+            >
+              {images.map((img, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentImage(i)}
+                  className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
+                    i === currentImage ? 'border-eco-main' : 'border-transparent hover:border-eco-pale'
+                  }`}
+                >
+                  <img src={img.url} alt={img.alt} className="w-full h-full object-cover" />
+                </button>
+              ))}
+            </motion.div>
+          )}
+        </div>
+      </div>
+
       {/* Main Content */}
       <div className="max-w-2xl mx-auto">
         <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}>
