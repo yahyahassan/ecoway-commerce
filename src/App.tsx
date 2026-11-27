@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { LanguageProvider } from './context/LanguageContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -10,7 +10,7 @@ import AdminPage from './pages/AdminPage';
 export default function App() {
   return (
     <LanguageProvider>
-      <BrowserRouter basename="/ecoway-commerce">
+      <HashRouter>
         <div className="min-h-screen bg-white text-gray-800">
           <Header />
           <main className="pt-24 min-h-screen">
@@ -24,7 +24,7 @@ export default function App() {
           </main>
           <Footer />
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </LanguageProvider>
   );
 }

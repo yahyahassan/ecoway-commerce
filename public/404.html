@@ -6,13 +6,14 @@
   <link rel="icon" type="image/svg+xml" href="/ecoway-commerce/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>
-    // GitHub Pages SPA redirect: redirect all routes to index.html
+    // GitHub Pages SPA redirect for HashRouter: redirect all routes to index.html with hash
     (function() {
       var path = window.location.pathname;
       if (path.startsWith('/ecoway-commerce/')) {
         path = path.replace('/ecoway-commerce', '');
       }
-      var url = '/ecoway-commerce/index.html' + path + window.location.search;
+      var hash = window.location.hash || '#/';
+      var url = '/ecoway-commerce/index.html' + hash;
       window.location.replace(url);
     })();
   </script>
