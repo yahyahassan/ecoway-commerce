@@ -4,6 +4,7 @@ import { useLanguage } from '../context/LanguageContext';
 import productsData from '../data/products.json';
 import ProductCard from '../components/ProductCard';
 import { companyInfo } from '../types';
+import { Link } from 'react-router-dom';
 
 export default function CatalogPage() {
   const { t } = useLanguage();
