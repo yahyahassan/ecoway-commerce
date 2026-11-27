@@ -269,7 +269,7 @@ export default function ProductPage() {
         >
           <h2 className="text-2xl font-bold text-eco-dark mb-6">{t('منتجات مشابهة', 'Similar Products')}</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            {products.filter(p => p.category === product.category && p.sku !== product.sku).slice(0, 5).map((p, i) => (
+            {productsData.products.filter(p => p.category === product.category && p.sku !== product.sku).slice(0, 5).map((p, i) => (
               <ProductCard key={p.sku} product={p} index={i} />
             ))}
           </div>

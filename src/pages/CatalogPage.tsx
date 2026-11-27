@@ -11,13 +11,12 @@ export default function CatalogPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
 
   const categories = useMemo(() => {
-    const cats = new Set(products.map(p => p.category || 'other'));
+    const cats = new Set(productsData.products.map(p => p.category || 'other'));
     return ['all', ...cats].sort();
   }, []);
 
-  const allProducts = productsData.products || [];
   const filteredProducts = useMemo(() => {
-    return products.filter(p => {
+    return productsData.products.filter(p => {
       const matchesCategory = selectedCategory === 'all' || p.category === selectedCategory;
       const searchLower = search.toLowerCase();
       const matchesSearch = !search || 
