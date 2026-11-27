@@ -32,7 +32,7 @@ export interface ProductsData {
 
 export const companyInfo = {
   website: "https://ecoway.group",
-  whatsappPhone: "01144457333",
+  whatsappPhone: "201144457333",
   whatsappGroup: "https://chat.whatsapp.com/I6emzEZSWzdKIouGepbzIL?s=cl&p=a&mlu=4&ilr=4&iam=2",
   managerName: "Asmaa",
   managerTitle: "Marketing & Sales Manager",
